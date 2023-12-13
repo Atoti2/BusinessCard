@@ -26,3 +26,4 @@ function update(e){
     let cssVarName = '--' + e.id
     document.body.style.setProperty(cssVarName, value)
 }
+handleText()

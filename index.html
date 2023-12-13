@@ -23,8 +23,7 @@
             border-radius: 8px;
             color: var(--textColor);
             text-align: center;
-            position: relative;
-            
+            position: relative;   
         }
        
         img{
@@ -36,8 +35,11 @@
         }
 
         body{
-            justify-content: space-around;
+            padding: 10px;
+            margin: 0 auto;
+            justify-content: space-between;
             display: flex;
+            max-width: 800px;
         }
 
         .changer{
@@ -49,17 +51,20 @@
         form{
             display: flex;
             flex-direction: column;
-            width: 200px;
+       
             gap: 8px;
             padding-bottom: 10px;
             border-bottom: 1px solid black;
         }
+
         input[type="text"]{
            padding: 8px
         }
+
         input[type="button"]{
            cursor: pointer;
         }
+
         .colors{
             display: flex;
             flex-direction: column;
@@ -73,6 +78,16 @@
             justify-content: space-between;
         }
 
+        @media only screen and (max-width: 600px) {
+            body {
+                flex-direction: column;
+            }
+            .card{
+                order: -1;
+                margin: 20px auto;
+            }
+        }
+
         @media print {
             .changer{
                 display: none;
@@ -82,12 +97,12 @@
    
     </style>
 </head>
-<body >
+<body>
     <div class="changer">
         <button onclick="print()">Print</button>
         <form onkeyup="handleText()">
-            <input id="name" type="text" placeholder="Neved">
-            <input id="job" type="text" placeholder="Munka">
+            <input id="name" type="text" placeholder="Neved" >
+            <input id="job" type="text" placeholder="Munka" >
             <input id="emoji" type="text" placeholder="Emoji">
             <input type="file" id="kep" accept="image/*">
             <input type="button" onclick="showImage()" value="Kép betöltése">
