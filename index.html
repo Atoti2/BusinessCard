@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>Business Card Maker</title>
+    <style>
+        :root{
+            --borderColor: black;
+            --bgColor: black;
+            --imgTop: 200px;
+            --imgLeft: 0;
+            --textColor: white;
+            --borderSize: 1px;
+        }
+
+        .card{
+            border: var(--borderSize) solid var(--borderColor);
+            background-color: var(--bgColor);
+            width: 300px;
+            height: 350px;
+            border-radius: 8px;
+            color: var(--textColor);
+            text-align: center;
+            position: relative;
+            
+        }
+       
+        img{
+            margin: 2rem;
+            width: 200px;
+            position: absolute;
+            left: var(--imgLeft);
+            top: var(--imgTop);
+        }
+
+        body{
+            justify-content: space-around;
+            display: flex;
+        }
+
+        .changer{
+            background-color: grey;
+            padding: 9px;
+            border-radius: 5px;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            gap: 8px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid black;
+        }
+        input[type="text"]{
+           padding: 8px
+        }
+        input[type="button"]{
+           cursor: pointer;
+        }
+        .colors{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 200px;
+            margin-top: 10px;
+        }
+
+        .colors div{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media print {
+            .changer{
+                display: none;
+            }
+          
+        }
+   
+    </style>
+</head>
+<body >
+    <div class="changer">
+        <button onclick="print()">Print</button>
+        <form onkeyup="handleText()">
+            <input id="name" type="text" placeholder="Neved">
+            <input id="job" type="text" placeholder="Munka">
+            <input id="emoji" type="text" placeholder="Emoji">
+            <input type="file" id="kep" accept="image/*">
+            <input type="button" onclick="showImage()" value="Kép betöltése">
+        </form>
+        <div class="colors">
+            <div>
+                <label for="bgColor">Background color</label>
+                <input type="color" id="bgColor" onchange="update(this)">
+            </div>
+
+            <div>
+                <label for="textColor">Text color</label>
+                <input type="color" id="textColor" onchange="update(this)">
+            </div>
+
+            <div>
+                <label for="borderColor">Border color</label>
+                <input type="color" id="borderColor" onchange="update(this)">
+            </div>
+
+            <div>
+                <label for="borderSize">Border size</label>
+                <input type="range" id="borderSize" min="1" max="15" onchange="update(this)">
+            </div>
+
+            <div>
+                <label for="imgTop">Image top position</label>
+                <input type="range" id="imgTop" min="100" max="200" onchange="update(this)">
+            </div>
+
+            <div>
+                <label for="imgLeft">Image left position</label>
+                <input type="range" id="imgLeft" min="1" max="50" onchange="update(this)">
+            </div>
+        </div>
+    </div>
+
+    <div class="card to-print">
+        <h1 id="nev"></h1>
+        <h2 id="munka"></h2>
+        <h3 id="emodzsi"></h3>
+        <img src="" alt="">
+    </div>
+</body>
+</html>
